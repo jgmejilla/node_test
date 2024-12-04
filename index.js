@@ -1,5 +1,6 @@
 const http = require('node:http');
 const fs = require('node:fs')
+const path = require('node:path')
 
 // Create a local server to receive data from
 const server = http.createServer((req, res) => {
@@ -21,7 +22,7 @@ const server = http.createServer((req, res) => {
       break
   }
 
-  const file = fs.readFileSync(page, 'utf8', (err) => {
+  const file = fs.readFileSync(path.join(__dirname, page), 'utf8', (err) => {
     if (err) {
       console.log(err)
     }
